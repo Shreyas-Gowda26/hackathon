@@ -11,6 +11,5 @@ class Registration_Response(BaseModel):
     registered_at : datetime
 
     class Config:
-        orm_mode:str
+        orm_mode = True
 
-    
