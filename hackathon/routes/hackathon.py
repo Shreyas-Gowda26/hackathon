@@ -39,7 +39,7 @@ def update_hackathon(hackathon_id:str,hackathon:HackathonBase):
     if not existing_hackathon:
         raise HTTPException(status_code =404,detail="Hackathon not found")
     updated_hackathon = hackathon.model_dump()
-    hackathon_collection.update_one({"_id":ObjectId(hackathon_id)},{"set":updated_hackathon})
+    hackathon_collection.update_one({"_id":ObjectId(hackathon_id)},{"$set":updated_hackathon})
     updated_hackathon["id"]=hackathon_id
     return HackathonResponse(id=hackathon_id,**updated_hackathon)
 
