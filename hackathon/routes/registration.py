@@ -4,12 +4,13 @@ from schemas.registrations_schemas import Registration_base,Registration_Respons
 from bson import ObjectId
 from typing import List
 from datetime import datetime
+from hackathon.auth.roles import allow_roles
 router=APIRouter(
     prefix="/registrations",
     tags=["Registrations"]
 )
 
-@router.post("/",response_model=Registration_Response)
+@router.post("/",response_model=Registration_Response,dependencies=[Depends(allow_roles("participant","admin"))])
 def create_Registration(registration:Registration_base):
     registration_dict = registration.model_dump()
     res = registrations_collection.insert_one(registration_dict)

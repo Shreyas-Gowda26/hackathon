@@ -4,3 +4,5 @@ passlib[bcrypt]
 bcrypt==4.3.0
 python-jose[cryptography]
 bson
+uvicorn
+pydantic

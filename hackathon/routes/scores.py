@@ -1,16 +1,16 @@
-from fastapi import APIRouter,HTTPException
+from fastapi import APIRouter,HTTPException,Depends
 from database import scores_collection
 from schemas.score_schemas import ScoreBase,ScoreResponse
 from typing import List
 from datetime import datetime
 from bson import ObjectId
-
+from hackathon.auth.roles import allow_roles
 router=APIRouter(
     prefix="/scores",
     tags=["scores"]
 )
 
-@router.post("/",response_model=ScoreResponse)
+@router.post("/",response_model=ScoreResponse,dependencies=[Depends(allow_roles("judge","admin"))])
 def create_score(score:ScoreBase):
     score_dict = score.model_dump()
     res = scores_collection.insert_one(score_dict)

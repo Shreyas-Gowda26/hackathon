@@ -10,13 +10,13 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password:str
 
-class UserLogin(UserBase):
+class UserLogin(BaseModel):
     email : EmailStr
     password :str
 
 class UserResponse(UserBase):
     id:str
-    created_at = datetime
+    created_at : datetime
 
     class Config:
         orm_mode = True

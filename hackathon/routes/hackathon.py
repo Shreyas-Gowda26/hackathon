@@ -4,12 +4,13 @@ from hackathon.schemas.hackathon_schemas import HackathonBase,HackathonResponse
 from typing import List
 from datetime import datetime
 from bson import ObjectId
+from hackathon.auth.roles import allow_roles
 router = APIRouter(
     prefix="/hackathons",
     tags=["Hackathons"]
 )
 
-@router.post("/",response_model=HackathonResponse)
+@router.post("/",response_model=HackathonResponse, dependencies=[Depends(allow_roles("organizer","admin"))])
 def create_hackathon(hackathon:HackathonBase):
     hackathon_dict = hackathon.model_dump()
     res = hackathon_collection.insert_one(hackathon_dict)
