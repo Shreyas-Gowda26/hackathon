@@ -28,5 +28,5 @@ def login_user(user: UserLogin):
     if not db_user or not pwd_context.verify(user.password, db_user["password"]):
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    token = create_access_token({"user_id": str(db_user["_id"])})
+    token = create_access_token(data={"user_id": str(user["_id"]), "role": user["role"]})
     return {"access_token": token, "token_type": "bearer"}
