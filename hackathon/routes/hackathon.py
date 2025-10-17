@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Depends,HTTPException,status
+from fastapi import APIRouter,Depends,HTTPException
 from database import hackathon_collection
 from hackathon.schemas.hackathon_schemas import HackathonBase,HackathonResponse
 from typing import List

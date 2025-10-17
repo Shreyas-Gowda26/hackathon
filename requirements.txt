@@ -6,3 +6,4 @@ python-jose[cryptography]
 bson
 uvicorn
 pydantic
+fastapi-mail
