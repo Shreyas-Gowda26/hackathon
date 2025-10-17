@@ -12,8 +12,16 @@ class SubmissionBase(BaseModel):
     video_link:Optional[str]=None
 
 class SubmissionCreate(SubmissionBase):
-    id:str
-    submitted_at:datetime
+    file_url: Optional[str] = None
+    file_path: Optional[str] = None
+    submitted_at: Optional[datetime] = None
+
+    
+class SubmissionResponse(SubmissionBase):
+    id: str
+    file_url: Optional[str] = None
+    file_path: Optional[str] = None
+    submitted_at: datetime
 
     class Config:
         orm_mode = True
