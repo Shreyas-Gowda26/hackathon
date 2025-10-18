@@ -1,5 +1,5 @@
 from fastapi import APIRouter,Depends,HTTPException
-from database import hackathon_collection
+from hackathon.database import hackathon_collection
 from hackathon.schemas.hackathon_schemas import HackathonBase,HackathonResponse
 from typing import List
 from datetime import datetime

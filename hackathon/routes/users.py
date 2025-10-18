@@ -1,5 +1,5 @@
 from fastapi import APIRouter,Depends,HTTPException
-from database import users_collection
+from hackathon.database import users_collection
 from hackathon.schemas.users_schemas import UserBase,UserResponse,UserLogin,UserCreate
 from typing import List
 from bson import ObjectId

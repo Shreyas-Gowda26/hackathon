@@ -3,7 +3,7 @@ pymongo
 passlib[bcrypt]
 bcrypt==4.3.0
 python-jose[cryptography]
-bson
+bson==0.5.10
 uvicorn
 pydantic
 fastapi-mail
